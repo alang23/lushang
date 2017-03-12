@@ -1,0 +1,22 @@
+html,body,.billa { width: 148mm; height: 90mm; float:left;  }
+table { border-collapse: collapse; border-spacing: 0; border-left: 1px solid #888; border-top: 1px solid #000; text-align: center; width: 80%; margin-left: 10mm; }
+ul { list-style-type: none; }
+ul > li { font-size: 4mm; }
+th, td { border-right: 1px solid #000; border-bottom: 1px solid #000; padding: 0; }
+/* th { font-weight: bold; } 
+   ul > li { font-size: 4mm; font-weight: bold; }
+   .bold { font-size: 5mm; font-weight: bolder; }
+   */
+#RMakeInvoiceTime { width: 20mm; }
+#qrcode { width: 25mm; height: 25mm; margin-top: 2mm; }
+.txt { border: #999 1px solid; height: 20px; width: 58px; }
+.font { font-size: 4mm; margin-left: 10mm; }
+.operate {float:right; }
+.RMakeInvoice{padding-left: 28mm; }
+.RMakeInvoiceFood {padding-left: 28mm; margin-top: 5mm;}
+.bold { font-size: 5mm; }
+.topArea { height: 19mm; width: 38mm; float: left; padding-bottom: 0; }
+.txttop { text-align: right; position: relative; font-size: 4mm; }
+.txttop p { position: absolute; bottom: 0px; padding: 0px; margin: 0px; }
+.receipt-info { width: 85mm; float: left; margin-top:10px; }
+.arcode { width: 25mm; float: left; }

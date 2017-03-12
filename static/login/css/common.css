@@ -1,0 +1,77 @@
+body{margin:0px;background-color:#F5F9FE;font-family:Arial,Helvetica,sans-serif;font-size:12px;color:#000000;height:100%}
+input{font-family:Arial,Helvetica,sans-serif;vertical-align:middle;font-size:12px;}
+form,p,h1,h2,h3,h4,li,ul{margin:0px;padding:0px;}
+li{line-height:180%;list-style-type:none;}
+img{max-width:400px;}
+.font_green{ color:#009900}
+.link_lan a:link{color:#003399;text-decoration:none;}
+.link_lan a:visited{text-decoration:none;color:#003399;}
+.link_lan a:hover{text-decoration:underline;color:#009900;}
+.link_lan a:active{text-decoration:none;color:#003399;}
+.link_bk a:link{color:#333333;text-decoration:none;}
+.link_bk a:visited{text-decoration:none;color:#333333;}
+.link_bk a:hover{text-decoration:underline;color:#009900;}
+.link_bk a:active{text-decoration:none;color:#333333;}
+.link_w a:link{color:#FFFFFF;text-decoration:none;}
+.link_w a:visited{text-decoration:none;color:#FFFFFF;}
+.link_w a:hover{text-decoration:underline;color:#FFFFFF;}
+.link_w a:active{text-decoration:none;color:#FFFFFF;}
+.link_g a:link{color:#009900;text-decoration:underline;}
+.link_g a:visited{text-decoration:underline;color:#009900;}
+.link_g a:hover{text-decoration:underline;color:#009900;}
+.link_g a:active{text-decoration:underline;color:#009900;}
+.clear{clear:both;}
+.view{ margin-left:5px; padding:4px; cursor:pointer;background-image:url(../images/view.png); background-repeat:no-repeat; background-position:0px 7px;}
+.view:hover{background-position:0px -33px;}
+.pictip{ margin-left:5px; padding:4px; cursor:pointer;background-image:url(../images/pictip.png); background-repeat:no-repeat; background-position:0px 5px;}
+.pictip:hover{background-position:0px -35px;}
+.notestip{ margin-left:5px; padding:4px; cursor:pointer;background-image:url(../images/notestip.png); background-repeat:no-repeat; background-position:0px 5px;}
+.notestip:hover{background-position:0px -35px;}
+.emailtip{ margin-left:5px; padding:4px; cursor:pointer;background-image:url(../images/emailtip.png); background-repeat:no-repeat; background-position:0px 5px;}
+.emailtip:hover{background-position:0px -35px;}
+.smstip{ margin-left:5px; padding:4px; cursor:pointer;background-image:url(../images/smstip.png); background-repeat:no-repeat; background-position:0px 5px;}
+.smstip:hover{background-position:0px -35px;}
+.foribg{background: #F5FCCC;}
+/*-----椤堕儴鎻愮ず--------*/
+.pagetit{padding-top:7px;padding-bottom:15px;padding-left:3px;}
+.pagetit .ptit{font-size:14px;font-weight:bold;color:#006699;width:auto;float:left;margin-right:26px;line-height:25px;padding-left:6px;}
+.toptip{line-height:180%;}
+.toptip h2{padding-left:20px;display:block;color:#000000;font-size:12px;margin-bottom:8px;border-bottom:1px  #DFEDF7 solid;border-top:1px #DFEDF7 solid;background-color:#F0F8FD;height:30px;line-height:30px;margin-bottom:8px;font-weight:100}
+.toptip p{color:#666666;padding-bottom:10px;padding-left:20px;}
+.toptip p strong{color:#0066CC}
+.toptit{line-height:180%;padding-left:20px;border-bottom:1px  #DFEDF7 solid;border-top:1px #DFEDF7 solid;background-color:#F0F8FD;height:30px;line-height:30px;margin-bottom:8px;}
+
+/*-----椤甸潰鍐呴儴涓婃柟瀵艰埅--------*/
+.topnav{font-weight:bold;float:left;}
+.topnav a{display:block;float:left;height:23px;width:auto;color:#666666;margin-right:10px;cursor:pointer;text-decoration:none;}
+.topnav a u{display:block;float:left;height:23px;line-height:25px;width:auto;font-size:12px;text-decoration:none;padding-left:8px;margin-right:8px;}
+.topnav a:hover{background:url(../images/topnavbg.gif) no-repeat right 0px;}
+.topnav a:hover u{background:url(../images/topnavbg.gif) no-repeat 0px 0px}
+.topnav a.select{background:url(../images/topnavbg.gif) no-repeat right -24px;color:#fff}
+.topnav a:hover.select{background:url(../images/topnavbg.gif) no-repeat right -24px;color:#fff}
+.topnav a.select u{background:url(../images/topnavbg.gif) no-repeat 0px -24px;}
+.topnav a:hover.select u{background:url(../images/topnavbg.gif) no-repeat 0px -24px;}
+
+/*鍒嗛〉*/
+.qspage{font-size:12px;line-height:400%;}
+.qspage a{padding:4px 8px;border:1px #CAE0F4 solid;margin-right:5px;text-decoration:none;color:#666666;background-color:#F0F8FD;}
+.qspage a:hover{background-color:#FFFFFF;color:#1450A0}
+.qspage .current{padding:4px 8px;border:1px  #164885  solid;color:#FFFFFF;margin-right:5px;background-color:#1450A0;border-radius:0px;}
+
+/*-----鐧诲綍鏍峰紡--------*/
+.login_top{height:190px;width:100%;background-color:#F5F9FE}
+.login_top .logo{width:500px;height:70px;margin:0 auto;text-align:center;padding-top:70px;}
+.login_main{width:320px;margin:0 auto;padding-top:30px;}
+.login_main .ce{width:320px;height:70px;position:relative;}
+.login_main .ce .imgbg{background-image:url(../images/login_input.gif);background-repeat:no-repeat;background-position:0px -6px;width:42px;height:42px;left:1px;top:1px;position:absolute;border-radius:3px 0px 0px 3px;}
+.login_main .ce .imgbg.pwd{background-position:0px -76px;}
+.login_main .ce .linput{width:260px;height:40px;line-height:40px;font-size:14px;background-color:#FFFFFF;border:1px #CCCCCC solid;border-radius:4px;font-family:"microsoft yahei";padding-left:50px;}
+.login_main .ce .linput.pwd{color:#999999}
+.login_main .ce .linput:focus{outline:none;}
+.login_main .ce .btn{width:312px;height:42px;background-color:#33BEF2;border:0px;border-radius:4px;font-size:16px;color:#FFFFFF;font-family:"microsoft yahei";cursor:pointer}
+.login_main .ce .btn:hover{background-color:#0099CC;}
+.login_main .ce .err{width:295px;height:40px;line-height:40px;font-size:14px;background-color:#FDECE1;border:1px  #FF6666 solid;border-radius:4px;font-family:"microsoft yahei";padding-left:15px;color:#FF0000}
+.login_foot{text-align:center;line-height:200%;color:#999999;padding-top:30px;}
+
+
+

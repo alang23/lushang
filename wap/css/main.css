@@ -1,0 +1,114 @@
+@charset "utf-8";
+/* CSS Document */
+
+body,p,input,h1,h2,h3,h4,h5,h6,ul,li,dl,dt,dd,form{margin:0;padding:0;list-style:none;vertical-align:middle;line-height:1;text-align: center;}
+body,html{width:640px;height:100%;position:relative;font:12px/1.4 "微软雅黑",Helvetica,sans-serif;background-color:#ffffff;margin:0 auto;}
+header,section,footer,img,button{display:block;margin:0;padding:0;border:none;}
+body {-webkit-tap-highlight-color:rgba(0,0,0,0);}
+
+table {
+	border-collapse: collapse;
+	border-spacing: 0
+}
+fieldset,img {
+	border: 0
+}
+
+input,textarea,select {
+	font-family: inherit;
+	font-size: inherit;
+	font-weight: inherit
+}
+button,input[type="submit"] {
+	border: none;
+	background: none;
+	appearance: none;
+	outline: none
+}
+a {
+	touch-callout: none;
+	text-decoration: none;
+	outline:none;
+	color:inherit;
+}
+em {
+	font-style: normal
+}
+
+/*通用样式*/
+section{position:relative;width:640px; margin:0 auto;background:#fff;min-height:100%; -webkit-transition: all 2s;}
+.clear{ clear:both;}
+.hide{display:none;}
+
+/*刮奖*/
+.ind_top{position:relative;width:100%;height:88px;background:#ee5c5f;color:#fff;text-align:center;font-size:28px;line-height:80px;}
+.ind_top .left{position:absolute;left:25px;top:25px;}
+.ind_top .right{position:absolute;right:25px;top:25px;font-size:22px;color:#fff;line-height:30px;}
+.ind_top .right>img{float:left;margin-right:10px;}
+.ind_login{width:100%;height:52px;background:#305985;}
+.ind_login p{font-size:22px;color:#fff;line-height:48px; margin-left:66px;text-align:left;}
+
+.ind_gua{position:relative;width:100%;height:470px;background:url(../images/ind_gua.jpg) no-repeat;}
+.ind_gua h2{font-size:22px;float:left;margin:210px 0 0 50px;width:570px;color:#fff;text-align:left; font-weight:400;}
+.ind_gua .tu_db,.ind_gua .tu_sm{position:absolute;width:415px;height:75px;top:282px;left:122px;text-align:center;line-height:72px;font-size:30px;color:#000;}
+.ind_gua .tu_sm{background:#ccc;color:#888;}
+
+.gua_cont{position:relative;width:100%;background:url(../images/gua_bg.jpg) repeat;display:inline-block;}
+.gua_cont .hdgz{float:left;width:570px;height:1128px;background:rgba(1,1,1,0.2);margin:35px;border-radius:10px;}
+.gua_cont .hdgz .tit{width:100%;float:left;background:url(../images/hdgz_tit.png) left bottom no-repeat;height:92px;font-size:32px;color:#fff;padding-left:40px;text-align:left;line-height:100px;}
+.gua_cont .hdgz ul{margin:20px 30px;float:left;width:504px;}
+.gua_cont .hdgz ul li{float:left;width:504px;text-align:left;font-size:24px;line-height:36px; margin-top:15px;color:#fff;}
+.gua_cont .hdgz ul li span{color:#f1466a;}
+
+/*输入手机页*/
+.phone_bg{width:100%;height:100%;background:url(../images/phone_bg.jpg) no-repeat top;}
+.phone_nav,.lucky_nav,.pro_nav{position:fixed;right:0;bottom:5%;}
+.phone_input{ position:relative;width:410px;height:290px;background:rgba(255,255,255,0.2); margin:200px 115px;float:left;}
+.phone_input h2{width:100%;text-align:center;font-size:28px;color:#fff;float:left;margin-top:48px;font-weight:500;}
+
+.phone_input input{position:relative;outline:none;float:left;text-align:center;height:56px;background: url(../images/input_bg.png) no-repeat;border:0;line-height:36px;font-size:28px;width:283px; margin:20px 64px;}
+.phone_input input[value] {color:#fff8a7;}
+.phone_input input[placeholder] {color:#fff8a7;}
+.phone_input a{width:123px;height:57px;font-size:24px;text-align:center; background:url(../images/phone_btn.png) no-repeat;color:#fff;line-height:52px;display:inline-block;float:left;}
+.phone_input a.left{margin-left:64px;}
+.phone_input a.right{margin-left:36px;}
+
+/*幸运卡*/
+.lucky_list{width:100%;padding-bottom:50px;float:left}
+.lucky_list li{position:relative;width:100%;height:130px;border-top:1px solid #cfd7e1;border-bottom:1px solid #cfd7e1; margin-top:10px;background:#fff;}
+.lucky_list p{position:absolute;text-align:left;font-size:16px;color:#000;}
+.lucky_list p.number{top:14px;left:36px;}
+.lucky_list p.lun{top:14px;right:80px;}
+.lucky_list p.zt{top:98px;right:80px;text-align:right;}
+.lucky_list h2{position:absolute;left:42px;top:46px;text-align:left;font-size:24px;color:#000;}
+.lucky_list font{position:absolute;top:45px;right:68px;text-align:center;font-size:18px;color:#b2b1b2;line-height:32px; border:2px solid #b2b1b2;padding:0 10px;border-radius:6px;}
+.lucky_list font.yzj{color:#ee5c5f; border:2px solid #ee5c5f;}
+.lucky_list a{position:absolute;width:46px;height:80px;background:url(../images/list_right.png) center no-repeat;top:20px;right:0px;}
+
+/*中奖结果*/
+.result_bg{position:relative;width:100%;background:url(../images/gua_bg.jpg) repeat;display:inline-block;}
+.result_cont{position:relative;float:left;width:630px;margin:0 5px 20px;height:965px;background:url(../images/result_bg.png) no-repeat;}
+.result_cont .list{width:480px;height:250px;float:left;margin:356px 0 0 84px; overflow:hidden; overflow:auto;overflow-x:hidden;}
+.result_cont .list li{background:url(../images/ico_list.png) center left no-repeat;float:left;width:100%;margin-top:5px;}
+.result_cont .list p{font-size:22px;color:#305985;float:left;line-height:30px;}
+.result_cont .list p.lun{width:140px;text-align:left; margin-left:20px;}
+.result_cont .list p.name{width:98px;}
+.result_cont .list p.phone{width:150px;margin-left:50px;}
+
+/*选择商品*/
+.pro_list{width:100%;padding-bottom:50px;float:left}
+.pro_list li{position:relative;width:100%;height:180px;margin-top:5px;background:#fafafa;}
+.pro_list li .pic{width:180px;height:160px;float:left;margin:8px 25px;}
+.pro_list li .pic>img{width:100%;height:100%;}
+.pro_list li h2{width:366px;text-align:right;font-size:26px;margin:35px 0 0 20px;float:left;}
+.pro_list li .surplus{position:relative;width:366px;height:60px;float:left;margin-left:20px;}
+.pro_list li .surplus .all{position:absolute;float:left;width:100%;height:4px;margin-top:30px;background:#9a8081;}
+.pro_list li .surplus .sy{position:absolute;width:20%;height:4px;background:#ee5c5f;left:0;}
+.pro_list li .surplus p{font-size:22px;color:#000; margin-top:40px}
+.pro_list li .surplus p.left{float:left;text-align:left;}
+.pro_list li .surplus p.right{float:right;text-align:right;}
+
+.pro_list li font{width:366px;float:left;text-align:right;font-size:22px;color:#000; margin:20px;}
+.pro_list li font span{ border-bottom:2px solid #ee5c5f; margin-right:20px;}
+
+
