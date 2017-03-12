@@ -12,18 +12,18 @@
 <body>
 <section>
        <a href="<?=base_url()?>results" class="lucky_nav"><img src="<?=base_url()?>static/lushang/images/nav_2.png"></a>
-       <div class="ind_top">你的幸运卡<a href="javascript:void();" onclick="history.back(-1);" class="left"><img src="<?=base_url()?>static/lushang/images/back.png"></a><a href="###" class="right"><img src="<?=base_url()?>static/lushang/images/open.png">一键开奖</a></div>
+       <div class="ind_top">你的幸运卡<a href="javascript:void();" onclick="history.back(-1);" class="left"><img src="<?=base_url()?>static/lushang/images/back.png"></a><a href="<?=base_url()?>lucky/lotto?phone=<?=$userinfo['phone']?>" class="right"><img src="<?=base_url()?>static/lushang/images/open.png">一键开奖</a></div>
        <div class="ind_login"></div>
        <ul class="lucky_list">
        <?php
        	foreach($lottery as $k => $v){
-          if($v['winning'] == 1){
+          if($v['display'] == '1'){
        ?>
            <li><h2><?=$v['pro_name']?></h2><p class="number">编号010001</p><p class="lun">第<?=$v['rounds']?>轮</p><p class="zt"><?=lottery_type($v['lottery_type'])?></p><font class="yzj"><?=winning_status($v['winning'])?></font><a href="<?=base_url()?>scratch/index?id=<?=$v['id']?>"></a></li>
        <?php
        	  }else{
        ?>
-        <li><h2><?=$v['pro_name']?></h2><p class="number">编号010001</p><p class="lun">第<?=$v['rounds']?>轮</p><p class="zt"><?=lottery_type($v['lottery_type'])?></p><font><?=winning_status($v['winning'])?></font><a href="<?=base_url()?>scratch/index?id=<?=$v['id']?>"></a></li>
+        <li><h2><?=$v['pro_name']?></h2><p class="number">编号010001</p><p class="lun">第<?=$v['rounds']?>轮</p><p class="zt">未开奖</p><font>未开奖</font><a href="<?=base_url()?>scratch/index?id=<?=$v['id']?>"></a></li>
         <?php
             }
           }

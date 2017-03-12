@@ -32,14 +32,12 @@ if(!function_exists('lottery_type')){
         $result = '';
         switch($status){
             case 0:
-                $result = '未开奖';
+                $result = '系统刮奖';
                 break;
             case 1:
                 $result = '自动刮奖';
                 break;
-            case 2:
-                $result = '系统刮奖';
-                break;
+  
             default:
                 $result = '未知';
                 break;
@@ -57,14 +55,12 @@ if( !function_exists('winning_status') ){
         $result = '未知';
         switch($v){
             case 0:
-                $result = '未开奖';
+                $result = '未中奖';
                 break;
             case 1:
                 $result = '已中奖';
                 break;
-            case 2:
-                $result = '未中奖';
-                break;
+
             default:
                 $resul = '未知';
                 break;
