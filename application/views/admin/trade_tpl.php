@@ -38,15 +38,17 @@ function flush(msg,url){
             <a class="active">订单管理</a>
           </li>
         </ul>
-        <form class="form-panel" method="get" action="<?=base_url()?>admin/trade/index">
+        <form class="form-panel" method="get" action="<?=base_url()?>trade/index">
           <div class="panel-title">
             <span>
-              <label>订单号：</label><input type="text" name="order_no" value="<?=$order_no?>" class="input-large control-text bui-form-field" />                
+              <label>公司名称：</label><input type="text" name="c_name" value="" class="input-large control-text bui-form-field" /> 
+              <label>客户代表：</label>
+               
               
-              <label>购买者：</label><input type="text" name="realname" value="<?=$realname?>" class="input-large control-text bui-form-field" /> 
-              <label>电话：</label><input type="text" name="phone" value="<?=$phone?>" class="input-large control-text bui-form-field" /> 
+              <label>联系人：</label><input type="text" name="contacts" value="" class="input-large control-text bui-form-field" /> 
+              <label>电话：</label><input type="text" name="phone" value="" class="input-large control-text bui-form-field" /> 
               <button id="btnSearch" type="submit" class="button button-primary">搜索</button>
-              <label><a href="<?=base_url()?>admin/trade/index">全部</a></label>
+              <label><a href="<?=base_url()?>trade/index">全部</a></label>
 
            </span>
           </div>

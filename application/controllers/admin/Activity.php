@@ -192,6 +192,7 @@ class Activity extends Zrjoboa
 				$add['addtime'] = time();
 				$add['lottery_no'] = $v['id'].'_'.$i;
 				$add['rounds'] = $activity['rounds'];
+				$add['realname'] = $v['realname'];
 				if($this->lottery->add($add)){
 					$num++;
 				}

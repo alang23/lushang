@@ -18,39 +18,16 @@ class Trade extends Zrjoboa
 		$userinfo = $this->userinfo;
 		$page = isset($_GET['page']) ? $_GET['page'] : 0;
         $page = ($page && is_numeric($page)) ? intval($page) : 1;
-        $order_no = isset($_GET['order_no']) ? $_GET['order_no'] : '';
-        $realname = isset($_GET['realname']) ? $_GET['realname'] : '';
-        $phone = isset($_GET['phone']) ? $_GET['phone'] : '';
-        $data['order_no'] = $order_no;
-        $data['realname'] = $realname;
-        $data['phone'] = $phone;
 
         $limit = 20;
         $offset = ($page - 1) * $limit;
-
-        $like = array();
         $pagination = '';
-        if(!empty($order_no)){
-        	$where['where']['order_no'] = $order_no;
-        	$countwhere['order_no'] = $order_no;
-
-        }
-
-        if(!empty($realname)){
-        	$where['like'] = array('key'=>'realname','value'=>$realname);
-        	$like = array('key'=>'realname','value'=>$realname);;
-        }
-
-        if(!empty($phone)){
-        	$where['where']['phone'] = $phone;
-        	$countwhere['phone'] = $phone;
-
-        }
-        $countwhere['isdel'] = '0';
-        $count = $this->trade->get_count($countwhere,$like);
+                
+        $countwhere = array('isdel'=>'0');
+        $count = $this->trade->get_count($countwhere);
         $data['count'] = $count;
 
-        $pageconfig['base_url'] = base_url('/admin/trade/index?ordr_no='.$order_no.'&realname='.$realname.'&phone='.$phone);
+        $pageconfig['base_url'] = base_url('/trade/index?');
         $pageconfig['count'] = $count;
         $pageconfig['limit'] = $limit;
         $data['page'] = home_page($pageconfig);
@@ -59,7 +36,7 @@ class Trade extends Zrjoboa
 		$where['page'] = true;
         $where['limit'] = $limit;
         $where['offset'] = $offset;
-        $where['where']['isdel'] = '0';
+        $where['where'] = array('isdel'=>'0');
 
         $where['order'] = array('key'=>'id','value'=>'DESC');
 		$list = $this->trade->getList($where);	

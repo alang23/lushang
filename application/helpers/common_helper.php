@@ -35,11 +35,11 @@ if(!function_exists('lottery_type')){
                 $result = '系统刮奖';
                 break;
             case 1:
-                $result = '自动刮奖';
+                $result = '自助刮奖';
                 break;
   
             default:
-                $result = '未知';
+                $result = '系统刮奖';
                 break;
         }
 
@@ -86,6 +86,17 @@ if( !function_exists('passin_status') ){
                 $resul = '未知';
                 break;
         }
+
+        return $result;
+    }
+}
+
+if( !function_exists('view_phone')){
+
+    function view_phone($phone,$start=3,$end=-4)
+    {   
+        $result = $phone;
+        $result = substr_replace($phone, '****', $start, $end);
 
         return $result;
     }

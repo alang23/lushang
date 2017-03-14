@@ -18,10 +18,4 @@ class Defaults extends Zrjoboa
 
 		$this->tpl('defaults',$data);
 	}
-
-	public function user_login()
-	{
-		$phone = $this->input->post('phone');
-		
-	}
 }

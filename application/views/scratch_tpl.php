@@ -7,7 +7,26 @@
 <title>路上诚品</title>
 <link href="<?=base_url()?>static/lushang/css/main.css" rel="stylesheet">
 <link href="<?=base_url()?>static/lushang/css/animate.css" rel="stylesheet">
-
+<style>
+  
+    #card {
+        height: 100%;
+        font-weight: bold;
+        font-size: 40px;
+        line-height: 75px;
+        text-align: center;
+        background: #FAFAFA;
+    }
+    
+    #scratch {
+        width: 100%;
+        height: 75px;
+        /*margin: 50px auto 0;*/
+        border: 1px solid #ccc;
+    }
+    </style>
+    <link rel="stylesheet" href="<?=base_url()?>static/dist/lucky-card.css">
+    <script src="<?=base_url()?>static/dist/lucky-card.min.js"></script>
 </head>
 <body>
 <section>
@@ -15,27 +34,69 @@
        <div class="ind_login"><p><?=$info['phone']?> 您好</p></div>
        <div class="ind_gua">
             <h2><?=$info['pro_name']?></h2>
-            <div class="tu_db">中奖内容</div>
-            <div class="tu_sm">刮开此图层</div>
+            <div class="tu_db"><?=winning_status($info['winning'])?></div>
+            <?php
+                if($info['display']=='0'){
+            ?>
+            <div class="tu_sm">
+              
+                <div id="scratch">
+                    <div id="card"><?=winning_status($info['winning'])?></div>
+                </div>
+                
+            </div>
+            <?php
+              }
+            ?>
        </div>
        <div class="gua_cont">
             <div class="hdgz">
-                 <p class="tit">活动规则</p>
+                 <p class="tit">兑奖规则</p>
                  <ul>
-                 <li><span>1、</span>凡参加活动者，即视为同意接受本活动规则及奖品兑现规则的所有条款，如遇舞弊、欺诈、技术手段伪造数据等情形，主办方有权取消参与者参加活动的资格及各种权益。</li>
-                 <li><span>2、</span>本次活动开奖及兑奖详情，请参见具体商品介绍。</li>
-                 <li><span>3、</span>本次活动所获得的现金券、特权福利等使用规则，请参见具体商品介绍。</li>
-                 <li><span>4、</span>所有获奖名单请到指定查询页面查询或咨询平台客服。</li>
-                 <li><span>5、</span>活动期间因技术或其它不可预见的因素，我们有权中止或取消此次活动。</li>
-                 <li><span>6、</span>客户服务： <br>电邮：lushangchengpin@roadsun.cc <br>QQ：2597168959</li>
-                 <li><span>7、</span>本次活动用户遇虚假、伪造、欺骗、仿冒等情形，需联系平台客服甄别确认。用户参与非官方的活动造成的损失，平台方不承担相应责任。</li>
-                 <li><span>8、</span>本的用户自料信息，仅用于平台兑奖，不予泄露和传播。</li>
-                 <li><span>9、</span>活动规则遇有歧义，以深圳市路上自驾有限公司的解释为准。</li>
+                 <li><span>1、</span>用户必须参与本店指定商品的营销活动,才可以参加抽奖活动,具体参见商 品详情页。参与营销活动的具体商品达成销售目标后,所有参与购买的用户即可 参加抽奖。抽奖资格及中奖记录以本平台的记录为准。</li>
+                 <li><span>2、</span>某一商品自达成销售目标的当日起计算三日内为数据处理时间,第四日至第 十日为用户刮奖时间。超出第十日用户未刮奖,则由系统自动开奖。</li>
+                 <li><span>3、</span>用户可以在指定的查询页面查询中奖信息,获得旅游线路的用户需要提前 1 个月联系本店家沟通确认旅游套餐或客栈入住消费人和消费时间等信息,1 人 1 年内有效。获得客栈入住的用户需要提前 7 天联系本店家沟通确认客栈入住人和 入住时间等信息,1 人 1 年内有效。非中奖者本人入住,须中奖者本人书面确认</li>
+                 <li><span>4、</span>本店客服信息 电邮:lushangchengpin@roadsun.cc QQ:2597168959</li>
+
                  </ul>
             </div>
        </div>
 </section>
 <script src="<?=base_url()?>static/lushang/js/jquery-1.10.2.min.js"></script>
 <script src="<?=base_url()?>static/lushang/js/main.js"></script>
+    <script>
+    LuckyCard.case({
+        ratio: .7
+    }, function() {
+        //标记开奖
+        
+          var aj = $.ajax( {
+              url:'<?=base_url()?>lucky/lotto_self',
+              data:{
+                  
+                  id : '<?=$id?>',
+                  
+              },
+              contentType:"application/x-www-form-urlencoded; charset=utf-8",
+              type:'post',
+              cache:false,
+              dataType:'json',
+              success:function(data){
+                
+               if(data.code == 0){
+                 // window.location = '<?=base_url()?>products';
+               }else{
+                  alert(data.msg);
+               }
+
+              },
+              error : function() {
+                  alert("请求失败，请重试");
+              }
+          });
+          
+        this.clearCover();
+    });
+    </script>
 </body>
 </html>

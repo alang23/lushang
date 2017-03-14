@@ -16,9 +16,14 @@
        <div class="result_bg">
             <div class="result_cont">
                  <ul class="list">
-                     <li><p class="lun">第1轮刮奖</p><p class="name">王XX</p><p class="phone">158****4231</p></li>
-                     <li><p class="lun">第2轮刮奖</p><p class="name">王XX</p><p class="phone">158****4231</p></li>
-                     <li><p class="lun">第3轮刮奖</p><p class="name">王XX</p><p class="phone">158****4231</p></li>
+                 <?php
+                    foreach($list as $k => $v){
+                 ?>
+                     <li><p class="lun">第<?=$v['rounds']?>轮刮奖</p><p class="name"><?=$v['realname']?></p><p class="phone"><?=view_phone($v['phone'])?></p></li>
+                <?php
+                    }
+                ?>
+                    
                  </ul>
             </div>
        </div>
