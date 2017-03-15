@@ -10,26 +10,33 @@
 </head>
 <body>
 <section class="phone_bg">
-       <a href="###" class="phone_nav"><img src="<?=base_url()?>static/lushang/images/nav_1.png"></a>
+       <a href="https://h5.youzan.com/v2/feature/10qwlqr2j" class="phone_nav"><img src="<?=base_url()?>static/lushang/images/nav_1.png"></a>
        <div class="phone_input">
             <h2>输入您的手机号码：</h2>
             <input type="text" id="phone" placeholder="" maxlength="11">
             <a href="javascript:void(0);" onclick="do_post();" class="left">确 认</a>
-            <a href="###" class="right">取 消</a>
+            <a href="javascript:void(0);" onclick="$('#phone').val('')" class="right">取 消</a>
        </div>
 </section>
 
 <script src="<?=base_url()?>static/lushang/js/jquery-1.10.2.min.js"></script>
 <script src="<?=base_url()?>static/lushang/js/main.js"></script>
+<script src="<?=base_url()?>static/layer/layer.js"></script>
+
 <script>
+
+
+function checkPhone(){ 
+}
 
 function do_post()
 {
-	var phone = $("#phone").val();
-	if(phone == ''){
-		alert('请输入手机号');
-		return false;
-	}
+    var phone = $("#phone").val();
+    if(!(/^1(3|4|5|7|8)\d{9}$/.test(phone))){ 
+        layer.tips('请填写正确的手机号', '#phone');
+        return false; 
+    } 
+
 
 	var aj = $.ajax( {
               url:'<?=base_url()?>defaults/user_login',
@@ -47,7 +54,19 @@ function do_post()
                if(data.code == 0){
                		window.location = '<?=base_url()?>products';
                }else{
-               		alert(data.msg);
+               		//询问框
+                    layer.confirm(data.msg, {
+                      title : '提示',
+                      btn: ['关闭','参加活动'] //按钮
+                    }, function(){
+                      
+                      layer.closeAll();
+
+                    }, function(){
+
+                        window.location = 'https://h5.youzan.com/v2/feature/1i2j1nf32';
+
+                    });
                }
 
               },

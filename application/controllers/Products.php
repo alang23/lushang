@@ -14,6 +14,9 @@ class Products extends BaseController
 
 	public function index()
 	{
+		$userinfo = $this->userinfo;
+		$data['userinfo'] = $userinfo;
+		
 		$data['products'] = $this->activity->getList();
 
 		$this->tpl('products_tpl',$data);

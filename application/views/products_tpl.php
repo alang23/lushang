@@ -14,7 +14,8 @@
        <a href="https://h5.youzan.com/v2/feature/10qwlqr2j" class="pro_nav"><img src="<?=base_url()?>static/lushang/images/nav_3.png"></a>
        <div class="ind_top">选择具体商品<a href="###" class="left"><img src="<?=base_url()?>static/lushang/images/back.png"></a>
        <a href="https://h5.youzan.com/v2/feature/1i2j1nf32" class="right">参与活动</a></div>
-       <div class="ind_login"></div>
+      
+       <div class="ind_login"><p><?=$userinfo['phone']?> 您好</p></div>
        <ul class="pro_list">
        <?php
           foreach($products as $k => $v){
@@ -30,7 +31,7 @@
                     <div class="all"><i class="sy"></i></div>
                     <p class="left">已售: <?=$v['num_s']?>份</p>
                     <p class="right">目标: <?=$v['num']?>份</p>
-               </div><font><span>第<?=$v['rounds']?>轮</span></font></li></a>
+               </div><font><span>第<?=$v['rounds']?>轮 </span>活动进行中</font></li></a>
                <?php
                 }
               }

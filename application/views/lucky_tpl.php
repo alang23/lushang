@@ -13,7 +13,7 @@
 <section>
        <a href="javascript" onclick="history.back(-1);" class="lucky_nav"><img src="<?=base_url()?>static/lushang/images/nav_2.png"></a>
        <div class="ind_top">你的幸运卡<a href="javascript:void(0);" onclick="history.back(-1);" class="left"><img src="<?=base_url()?>static/lushang/images/back.png"></a><a href="javascript:void(0);" class="ind_tc" onclick="display();"><img src="<?=base_url()?>static/lushang/images/open.png"></a></div>
-       <div class="ind_login"><a href="<?=base_url()?>lucky/lotto?phone=<?=$userinfo['phone']?>">一键开奖</a></div>
+       <div class="ind_login"><a href="javascript:void(0);" onclick="check_post();">一键开奖</a></div>
        <ul class="lucky_list">
        <?php
         foreach($lottery as $k => $v){
@@ -42,6 +42,7 @@
 </section>
 <script src="<?=base_url()?>static/lushang/js/jquery-1.10.2.min.js"></script>
 <script src="<?=base_url()?>static/lushang/js/main.js"></script>
+<script src="<?=base_url()?>static/layer/layer.js"></script>
 
 <script>
 function display()
@@ -52,6 +53,21 @@ function display()
     }else{
         $("#tc_box").css('display','none');
     }
+}
+
+function check_post()
+{
+//询问框
+layer.confirm('确定一键刮奖吗?', {
+  title : '提示',
+  btn: ['确定','取消'] //按钮
+}, function(){
+  //layer.msg('的确很重要', {icon: 1});
+  window.location = '<?=base_url()?>lucky/lotto';
+}, function(){
+
+});
+
 }
 </script>
 </body>

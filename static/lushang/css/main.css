@@ -110,7 +110,7 @@ section{position:relative;width:640px; margin:0 auto;background:#fff;min-height:
 .pro_list li .surplus p.left{float:left;text-align:left;}
 .pro_list li .surplus p.right{float:right;text-align:right;}
 
-.pro_list li font{width:366px;float:left;text-align:right;font-size:22px;color:#000; margin:20px;}
+.pro_list li font{width:366px;float:left;text-align:left;font-size:22px;color:#000; margin:20px;}
 .pro_list li font span{ border-bottom:2px solid #ee5c5f; margin-right:20px;}
 
 /*弹窗*/
