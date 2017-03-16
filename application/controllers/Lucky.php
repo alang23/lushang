@@ -14,14 +14,18 @@ class Lucky extends BaseController
 
 	public function index()
 	{
-		//$phone = '15814073940';
 		$userinfo = $this->userinfo;
 		$phone = $userinfo['phone'];
 		$data['userinfo'] = $userinfo;
-		
+		$id = isset($_GET['id']) ? $_GET['id'] : 0;
+		$data['id'] = $id;
 		//$winning = isset($_GET['winning']) ? $_GET['winning'] : '';
 		//$display = isset($_GET['display']) ? $_GET['display'] : '';
 		$lottery = array();
+
+		if(!empty($id)){
+			$where['where']['act_id'] = $id;
+		}
 
 		//中奖
 		if(isset($_GET['winning'])){
@@ -42,9 +46,13 @@ class Lucky extends BaseController
 	//开奖-系统
 	public function lotto()
 	{
-		$phone = $this->input->get('phone');
-		$update_config = array('phone'=>$phone,'display'=>'0');
-		$update_data = array('display'=>1,'lottery_type'=>2);
+		
+		$userinfo = $this->userinfo;
+		$phone = $userinfo['phone'];
+		$act_id = $this->input->get('act_id');
+		$update_config = array('phone'=>$phone,'act_id'=>$act_id,'display'=>'0');
+		$display_time = time();
+		$update_data = array('display'=>1,'lottery_type'=>2,'display_time'=>time());
 		$this->lottery->update($update_config,$update_data);
 
 		redirect('/lucky/index');
@@ -60,6 +68,7 @@ class Lucky extends BaseController
 		$config = array('id'=>$id,'phone'=>$phone);
 		$update_data['display'] = 1;
 		$update_data['lottery_type'] = 1;
+		$update_data['display_time'] = time();
 		if($this->lottery->update($config,$update_data)){
 			$msg = array(
 				'code'=>'0',

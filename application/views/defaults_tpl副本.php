@@ -9,26 +9,12 @@
 <link href="<?=base_url()?>static/lushang/css/animate.css" rel="stylesheet">
 </head>
 <body>
-<!--
 <section class="phone_bg">
        <a href="https://h5.youzan.com/v2/feature/10qwlqr2j" class="phone_nav"><img src="<?=base_url()?>static/lushang/images/nav_1.png"></a>
        <div class="phone_input">
             <h2>输入您的手机号码：</h2>
             <input type="text" id="phone"  placeholder="" maxlength="11" />
             <input type="text" id="phone"  placeholder="" maxlength="11" />
-            <a href="javascript:void(0);" onclick="do_post();" class="left">确 认</a>
-            <a href="javascript:void(0);" onclick="$('#phone').val('')" class="right">取 消</a>
-       </div>
-</section>
--->
-<section class="phone_bg">
-       <a href="https://h5.youzan.com/v2/feature/10qwlqr2j" class="phone_nav"><img src="<?=base_url()?>static/lushang/images/nav_1.png"></a>
-       <div class="phone_input">
-            <h2>输入您的手机号码：</h2>
-            <input type="text" id="phone" placeholder="" maxlength="11">
-            <h3>请输入检验码：</h3>
-            <input type="text" placeholder="" id="authcode"  class="yzm" >
-            <div class="phone_yzm"><img src="<?=base_url()?>defaults/getauthcode" id="acode" style="cursor:hand;" onclick="changecode();"></div>
             <a href="javascript:void(0);" onclick="do_post();" class="left">确 认</a>
             <a href="javascript:void(0);" onclick="$('#phone').val('')" class="right">取 消</a>
        </div>
@@ -41,9 +27,7 @@
 <script>
 
 
-function changecode()
-{
-  $("#acode").attr("src","<?=base_url()?>defaults/getauthcode?rnd="+Math.random());
+function checkPhone(){ 
 }
 
 function do_post()
@@ -54,19 +38,12 @@ function do_post()
         return false; 
     } 
 
-    var authcode = $("#authcode").val();
-    if(authcode == ''){
-        layer.tips('请填写验证码', '#authcode');
-        return false; 
-    }
-
 
 	var aj = $.ajax( {
               url:'<?=base_url()?>defaults/user_login',
               data:{
                   
                   phone : phone,
-                  acode : authcode
                   
               },
               contentType:"application/x-www-form-urlencoded; charset=utf-8",

@@ -46,4 +46,21 @@ class Lottery extends Zrjoboa
 
 
 	}
+
+	public function del()
+	{
+		$id = $this->input->get('id');
+		$config = array('id'=>$id);
+		if($this->lottery->del($config)){
+			redirect('/admin/lottery/index');
+		}
+	}
+
+	public function delall()
+	{
+		$id = $this->input->post('id');
+		$where = array('key'=>'id','value'=>$id);
+		$this->lottery->del(array(),$where);
+		redirect('/admin/lottery/index');
+	}
 }

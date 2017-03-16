@@ -55,6 +55,7 @@ class Activity extends Zrjoboa
 			$add['num_s'] = $this->input->post('num_s');
 			$add['price'] = $this->input->post('price');
 			$add['rounds'] = $this->input->post('rounds');
+			$add['enabled'] = intval($this->input->post('enabled'));
 
 			//图片上传
 			if(!empty($_FILES['userfile']['name'])){
@@ -108,6 +109,7 @@ class Activity extends Zrjoboa
 			$add['num_s'] = $this->input->post('num_s');
 			$add['price'] = $this->input->post('price');
 			$add['rounds'] = $this->input->post('rounds');
+			$add['enabled'] = intval($this->input->post('enabled'));
 
 			$id = $this->input->post('id');
 
@@ -165,6 +167,14 @@ class Activity extends Zrjoboa
 		}
 	}
 
+	public function delall()
+	{
+		$id = $this->input->post('id');
+		$where = array('key'=>'id','value'=>$id);
+		$this->activity->del(array(),$where);
+		redirect('/admin/activity/index');
+	}
+
 	//生成奖券
 	public function lottery()
 	{
@@ -194,15 +204,26 @@ class Activity extends Zrjoboa
 				$add['rounds'] = $activity['rounds'];
 				$add['realname'] = $v['realname'];
 				if($this->lottery->add($add)){
+					$jid = $this->lottery->insert_id();
 					$num++;
 				}
+				$jiang[$i] = $jid;
 			}
 
 			$update_config = array('id'=>$v['act_id']);
 			$update_data['do_ticket'] = 1;
 			$this->activity->update($update_config,$update_data);
+
 			
 		}
+					//出奖
+		$jnum = count($jiang);
+		$_num = mt_rand(0,($jnum-1));
+		$j_id = $jiang[$_num];
+		$j_config = array('id'=>$j_id);
+		$j_update_data['winning'] = 1;
+		$this->lottery->update($j_config,$j_update_data);
+
 		echo '成功生成:'.$num.'张奖券';
 	}
 

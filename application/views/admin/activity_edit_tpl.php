@@ -67,6 +67,13 @@
               <input name="passin" type="checkbox" value="1" <?php if($info['passin'] == 1){ ?> checked <?php } ?> />
         </div>
       </div>
+      
+      <div class="control-group">
+        <label class="control-label">是否完成：</label>
+        <div class="controls">
+              <input name="enabled" type="checkbox" value="1" <?php if($info['enabled'] == 1){ ?> checked <?php } ?>/>
+        </div>
+      </div>
       <div class="control-group">
         <label class="control-label">IOCN：</label>
         <div class="controls  control-row-auto">

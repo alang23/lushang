@@ -102,6 +102,52 @@ if( !function_exists('view_phone')){
     }
 }
 
+if( !function_exists('trade_status') ){
+
+    function trade_status($v)
+    {
+        $result = '未知';
+        switch($v){
+            case 0:
+                $result = '<font color="green">正常</font>';
+                break;
+            case 1:
+                $result = '<font color="red">售罄</font>';
+                break;
+            default:
+                $resul = '未知';
+                break;
+        }
+
+        return $result;
+    }
+}
+
+
+    function sub_str($str,$len)//$str字符串   $len 控制长度
+    {
+          $one=0;
+          $partstr='';
+          for($i=0;$i<$len;$i++){ 
+            $sstr=substr($str,$one,1);
+            if(ord($sstr)>224){
+                $partstr.=substr($str,$one,3);
+                $one+=3;
+            }elseif(ord($sstr)>192){
+                $partstr.=substr($str,$one,2);
+                $one+=2;
+            }elseif(ord($sstr)<192){
+                $partstr.=substr($str,$one,1);
+                $one+=1;
+            }
+         }
+        if(strlen($str)<$one){
+           return $partstr;
+        }else{
+        return $partstr.'....';
+        }
+    }
+
 if ( ! function_exists('get_ip'))
 {
     function get_ip()

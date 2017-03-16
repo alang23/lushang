@@ -33,7 +33,8 @@
        <div class="ind_top">刮  奖<a href="javascript:void(0);" onclick="history.back();" class="left"><img src="<?=base_url()?>static/lushang/images/back.png"></a></div>
        <div class="ind_login"><p><?=$info['phone']?> 您好</p></div>
        <div class="ind_gua">
-            <h2><?=$info['pro_name']?></h2>
+            <!--<h2><?=$info['pro_name']?></h2>-->
+             <h2><?=sub_str($info['pro_name'],24)?><img src="<?=base_url()?>static/lushang/images/gua_tit.png"></h2>
             <div class="tu_db"><?=winning_status($info['winning'])?></div>
             <?php
                 if($info['display']=='0'){

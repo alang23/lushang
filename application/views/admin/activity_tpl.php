@@ -38,6 +38,7 @@ function flush(msg,url){
             <a class="active">活动管理</a>
           </li>
         </ul>
+      <form name="tableform" method="post" action="<?=base_url()?>admin/activity/delall">
 
         <table cellspacing="0" class="table table-bordered">
           <thead>
@@ -50,11 +51,13 @@ function flush(msg,url){
                 <i class="icon-plus"></i>添加活动</button>
                 </li></a>
                 </ul>
+                                <a href="javascript:void(0);" onclick="delall();">批量删除</a>
+
             </th>
             </tr>
 
             <tr>
-              <th width="15"></th>
+              <th width="15"><input type="checkbox" id="checkall" ></th>
               <th>ID</th>
               <th>ICON</th>
               <th>活动名称</th>
@@ -62,6 +65,7 @@ function flush(msg,url){
               <th>拍卖份数</th>
               <th>已拍份数</th>
               <th>是否流拍</th>
+              <th>状态</th>
               <th>轮次</th>
               <th>#</th>
             </tr>
@@ -71,7 +75,7 @@ function flush(msg,url){
               foreach($list as $k => $v){
             ?>
             <tr>
-              <td><input type="checkbox"></td>
+              <td><input type="checkbox" name="id[]" value="<?=$v['id']?>"></td>
                <td ><?=$v['id']?></td>
                <td><img src="<?=base_url()?>uploads/activity/<?=$v['pic']?>"  width="60px" height="60px"/></td>
               <td ><?=$v['name']?></td>
@@ -79,19 +83,21 @@ function flush(msg,url){
               <td><?=$v['num']?></td>
               <td><?=$v['num_s']?></td>
               <td><?=passin_status($v['passin'])?></td>
+               <td><?=trade_status($v['enabled'])?></td>
               <td><?=$v['rounds']?></td>
 
               <td>
-              <a href="<?=base_url()?>admin/activity/edit?id=<?=$v['id']?>"><button class="button button-small button-warning">编辑</button></a> 
-              <a href="javascript:void(0);" onclick="flush('删除后不能恢复，确定删除吗?','<?=base_url()?>admin/activity/del?id=<?=$v['id']?>')"><button class="button button-small button-danger">删除</button></a> 
+              <a href="<?=base_url()?>admin/activity/edit?id=<?=$v['id']?>">编辑</a> |
+              <a href="javascript:void(0);" onclick="flush('删除后不能恢复，确定删除吗?','<?=base_url()?>admin/activity/del?id=<?=$v['id']?>')">删除</a> |
+
               <?php
                   if($v['do_ticket'] == '0'){
               ?>
-              <a href="<?=base_url()?>admin/activity/lottery?id=<?=$v['id']?>"><button class="button button-small button-success">生成奖券</button></a> 
+              <a href="<?=base_url()?>admin/activity/lottery?id=<?=$v['id']?>">生成奖券</a> 
               <?php
                   }else{
               ?>
-              <a href="<?=base_url()?>admin/lottery/index?id=<?=$v['id']?>"><button class="button button-small button-info">奖券列表</button></a> 
+              <a href="<?=base_url()?>admin/lottery/index?id=<?=$v['id']?>">奖券列表</a> 
 
               <?php
                 }
@@ -103,6 +109,7 @@ function flush(msg,url){
             ?>
           </tbody>
         </table>
+        </form>
         <div>
 
           <div class="pagination pull-right">
@@ -117,4 +124,36 @@ function flush(msg,url){
 <!-- script end -->
   </div>
     </body>
+            <script>
+
+$(function(){
+
+    $("#checkall").click(
+      function(){
+        if(this.checked){
+            $("input[name='id[]']").attr('checked', true)
+        }else{
+            $("input[name='id[]']").attr('checked', false)
+        }
+      }
+    );
+});
+
+function delall()
+{
+
+  layer.confirm('删除后不能恢复，确定删除吗?', {
+    btn: ['确定','取消'] //按钮
+  }, function(){
+      //window.location=url;
+      document.tableform.submit();
+      //alert(url);
+  }, function(){
+          //window.location=url;
+
+  });
+
+
+}
+    </script>
     </html>       

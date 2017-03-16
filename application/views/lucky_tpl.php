@@ -11,15 +11,16 @@
 </head>
 <body>
 <section>
-       <a href="javascript" onclick="history.back(-1);" class="lucky_nav"><img src="<?=base_url()?>static/lushang/images/nav_2.png"></a>
-       <div class="ind_top">你的幸运卡<a href="javascript:void(0);" onclick="history.back(-1);" class="left"><img src="<?=base_url()?>static/lushang/images/back.png"></a><a href="javascript:void(0);" class="ind_tc" onclick="display();"><img src="<?=base_url()?>static/lushang/images/open.png"></a></div>
-       <div class="ind_login"><a href="javascript:void(0);" onclick="check_post();">一键开奖</a></div>
+       <a href="<?=base_url()?>results"  class="lucky_nav"><img src="<?=base_url()?>static/lushang/images/nav_2.png"></a>
+       <div class="ind_top">你的幸运卡<a href="<?=base_url()?>products"  class="left"><img src="<?=base_url()?>static/lushang/images/back.png"></a><a href="javascript:void(0);" class="ind_tc" onclick="display();"><img src="<?=base_url()?>static/lushang/images/open.png"></a></div>
+       <div class="ind_login"><a href="javascript:void(0);" onclick="check_post('<?=$id?>');">一键开奖</a></div>
+       
        <ul class="lucky_list">
        <?php
         foreach($lottery as $k => $v){
           if($v['display'] == '1'){
        ?>
-           <li><h2><?=$v['pro_name']?></h2><p class="number">编号0<?=$v['rounds']?><?=$v['id']?></p><p class="lun">第<?=$v['rounds']?>轮</p><p class="zt"><?=lottery_type($v['lottery_type'])?></p><font class="yzj"><?=winning_status($v['winning'])?></font><a href="<?=base_url()?>scratch/index?id=<?=$v['id']?>"></a></li>
+           <li><h2><?=$v['pro_name']?></h2><p class="number">编号0<?=$v['rounds']?><?=$v['id']?></p><p class="lun">第<?=$v['rounds']?>轮</p><p class="zt"><?=date("Y-m-d H:i:s",$v['display_time'])?>结束 <?=lottery_type($v['lottery_type'])?></p><font class="yzj"><?=winning_status($v['winning'])?></font><a href="<?=base_url()?>scratch/index?id=<?=$v['id']?>"></a></li>
        <?php
           }else{
        ?>
@@ -33,9 +34,9 @@
        <div class="tc_box" id="tc_box" style="display:none">
             <img src="<?=base_url()?>static/lushang/images/tc_top.png" class="tc_jt">
             <ul class="tc_list">
-                <li><a href="<?=base_url()?>lucky/index?display=0">未开奖</a></li>
-                <li><a href="<?=base_url()?>lucky/index?winning=1">已中奖</a></li>
-                <li><a href="<?=base_url()?>lucky/index">全部</a></li>
+                <li><a href="<?=base_url()?>lucky/index?display=0&id=<?=$id?>">未开奖</a></li>
+                <li><a href="<?=base_url()?>lucky/index?winning=1&id=<?=$id?>">已中奖</a></li>
+                <li><a href="<?=base_url()?>lucky/index?id=<?=$id?>">全部</a></li>
             </ul>
        </div>
 
@@ -55,7 +56,7 @@ function display()
     }
 }
 
-function check_post()
+function check_post(id)
 {
 //询问框
 layer.confirm('确定一键刮奖吗?', {
@@ -63,12 +64,10 @@ layer.confirm('确定一键刮奖吗?', {
   btn: ['确定','取消'] //按钮
 }, function(){
   //layer.msg('的确很重要', {icon: 1});
-  window.location = '<?=base_url()?>lucky/lotto';
+  window.location = '<?=base_url()?>lucky/lotto?act_id'+id;
 }, function(){
 
-});
-
-}
+});}
 </script>
 </body>
 </html>

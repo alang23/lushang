@@ -57,6 +57,8 @@ function flush(msg,url){
 
           </ul>
         </form>
+                <form name="tableform" method="post" action="<?=base_url()?>admin/lottery/delall">
+
         <table cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -68,13 +70,15 @@ function flush(msg,url){
                 <i class="icon-plus"></i>添加订单</button>
                 </li></a>
                 </ul>
+                <a href="javascript:void(0);" onclick="delall();">批量删除</a>
             </th>
             </tr>
 
             <tr>
-              <th width="15"></th>
+              <th width="15"><input type="checkbox" id="checkall" ></th>
               <th>ID</th>
               <th>订单号</th>
+              <th>活动名称</th>
               <th>买家</th>
               <th>联系电话</th>
               <th>中奖情况</th>
@@ -86,15 +90,16 @@ function flush(msg,url){
               foreach($list as $k => $v){
             ?>
             <tr>
-              <td><input type="checkbox"></td>
+              <td><input type="checkbox" name="id[]" value="<?=$v['id']?>"></td>
               <td ><?=$v['id']?></td>
               <td><?=$v['order_no']?></td>
+              <td><?=$v['pro_name']?></td>
               <td><?=$v['realname']?></td>
               <td><?=$v['phone']?></td>
               <td><?=winning_status($v['winning'])?></td>
               <td>
               
-            
+              <a href="javascript:void(0);" onclick="flush('删除后不能恢复，确定删除吗?','<?=base_url()?>admin/lottery/del?id=<?=$v['id']?>')">删除</a> 
               </td>
             </tr>
             <?php
@@ -102,6 +107,7 @@ function flush(msg,url){
             ?>
           </tbody>
         </table>
+        </form>
         <div>
 
           <div class="pagination pull-right">
@@ -116,4 +122,36 @@ function flush(msg,url){
 <!-- script end -->
   </div>
     </body>
+        <script>
+
+$(function(){
+
+    $("#checkall").click(
+      function(){
+        if(this.checked){
+            $("input[name='id[]']").attr('checked', true)
+        }else{
+            $("input[name='id[]']").attr('checked', false)
+        }
+      }
+    );
+});
+
+function delall()
+{
+
+  layer.confirm('删除后不能恢复，确定删除吗?', {
+    btn: ['确定','取消'] //按钮
+  }, function(){
+      //window.location=url;
+      document.tableform.submit();
+      //alert(url);
+  }, function(){
+          //window.location=url;
+
+  });
+
+
+}
+    </script>
     </html>       

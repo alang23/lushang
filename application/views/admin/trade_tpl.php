@@ -11,6 +11,7 @@
     <script type="text/javascript" src="<?=base_url()?>static/layer/layer.js"></script>
   <script>
 function flush(msg,url){
+
   layer.confirm(msg, {
     btn: ['确定','取消'] //按钮
   }, function(){
@@ -56,6 +57,8 @@ function flush(msg,url){
 
           </ul>
         </form>
+
+        <form name="tableform" method="post" action="<?=base_url()?>admin/trade/delall">
         <table cellspacing="0" class="table table-bordered">
           <thead>
             <tr>
@@ -71,12 +74,15 @@ function flush(msg,url){
                 <button type="button" class="button button-small">
                 <i class="icon-plus"></i>批量导入</button>
                 </li></a>
+
                 </ul>
+                <a href="javascript:void(0);" onclick="delall();">批量删除</a>
+
             </th>
             </tr>
 
             <tr>
-              <th width="15"></th>
+              <th width="15"><input type="checkbox" id="checkall" ></th>
               <th>ID</th>
               <th>订单号</th>
               <th>产品</th>
@@ -92,7 +98,7 @@ function flush(msg,url){
               foreach($list as $k => $v){
             ?>
             <tr>
-              <td><input type="checkbox"></td>
+              <td><input type="checkbox" name="id[]" value="<?=$v['id']?>"></td>
               <td ><?=$v['id']?></td>
               <td><?=$v['order_no']?></td>
               <td><?=$v['pro_name']?></td>
@@ -101,8 +107,8 @@ function flush(msg,url){
               <td><?=$v['phone']?></td>
 
               <td>
-              <a href="<?=base_url()?>admin/trade/edit?id=<?=$v['id']?>"><button class="button button-small button-warning">编辑</button></a> 
-              <a href="javascript:void(0);" onclick="flush('删除后不能恢复，确定删除吗?','<?=base_url()?>admin/trade/del?id=<?=$v['id']?>')"><button class="button button-small button-danger">删除</button></a> 
+              <a href="<?=base_url()?>admin/trade/edit?id=<?=$v['id']?>">编辑</a> |
+              <a href="javascript:void(0);" onclick="flush('删除后不能恢复，确定删除吗?','<?=base_url()?>admin/trade/del?id=<?=$v['id']?>')">删除</a> 
             
               </td>
             </tr>
@@ -111,6 +117,7 @@ function flush(msg,url){
             ?>
           </tbody>
         </table>
+        </form>
         <div>
 
           <div class="pagination pull-right">
@@ -125,4 +132,36 @@ function flush(msg,url){
 <!-- script end -->
   </div>
     </body>
+    <script>
+
+$(function(){
+
+    $("#checkall").click(
+      function(){
+        if(this.checked){
+            $("input[name='id[]']").attr('checked', true)
+        }else{
+            $("input[name='id[]']").attr('checked', false)
+        }
+      }
+    );
+});
+
+function delall()
+{
+
+  layer.confirm('删除后不能恢复，确定删除吗?', {
+    btn: ['确定','取消'] //按钮
+  }, function(){
+      //window.location=url;
+      document.tableform.submit();
+      //alert(url);
+  }, function(){
+          //window.location=url;
+
+  });
+
+
+}
+    </script>
     </html>       

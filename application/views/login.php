@@ -14,6 +14,7 @@
 <body>
 
 <div class="signin">
+	<div class="signin-head"><img src="<?=base_url()?>static/login/images/test/head_120.png" alt="" class="img-circle"></div>
 	<form class="form-signin" role="form">
 		<input type="text" class="form-control" name="username" id="username" placeholder="用户名" required autofocus />
 		<input type="password" class="form-control" name="pawd" id="pawd" placeholder="密码" required />

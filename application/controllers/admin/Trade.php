@@ -128,12 +128,12 @@ class Trade extends Zrjoboa
 						$arr = $this->my_excel->read_csv($dir);
 						if(count($arr) > 0){
 							foreach($arr as $k => $v){
-								$add['order_no'] = $v['order_no'];
-								$add['phone'] = $v['phone'];
-								$add['realname'] = $v['realname'];
-								$add['pro_name'] = $v['pro_name'];
+								$add['order_no'] = (string)$v['order_no'];
+								$add['phone'] = (string)$v['phone'];
+								$add['realname'] = (string)$v['realname'];
+								$add['pro_name'] = (string)$v['pro_name'];
 								$add['act_id'] = $act_id;
-								$add['price'] = $v['price'];
+								$add['price'] = (string)$v['price'];
 								$add['addtime'] = time();
 								if($this->trade->add($add)){
 									$num++;
@@ -196,6 +196,14 @@ class Trade extends Zrjoboa
 		if($this->trade->del($config)){
 			redirect('/admin/trade/index');
 		}
+	}
+
+	public function delall()
+	{
+		$id = $this->input->post('id');
+		$where = array('key'=>'id','value'=>$id);
+		$this->trade->del(array(),$where);
+		redirect('/admin/trade/index');
 	}
 
 	private function get_activity()

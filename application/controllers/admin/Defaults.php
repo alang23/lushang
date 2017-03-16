@@ -18,4 +18,6 @@ class Defaults extends Zrjoboa
 
 		$this->tpl('defaults',$data);
 	}
+
+
 }

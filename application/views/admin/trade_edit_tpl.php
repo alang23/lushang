@@ -37,7 +37,7 @@
               <?php
                 foreach($activity as $k => $v){
               ?>
-                <option value="<?=$v['id']?>:<?=$v['name']?>" <?php if($info['act_id'] == $info['id']){ ?> selected <?php } ?>><?=$v['name']?></option>
+                <option value="<?=$v['id']?>:<?=$v['name']?>" <?php if($info['act_id'] == $v['id']){ ?> selected <?php } ?>><?=$v['name']?></option>
               <?php
                 }
               ?>
